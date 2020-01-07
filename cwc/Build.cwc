@@ -1,0 +1,36 @@
+-{vLib}=
+-L ExtLib/
+-lssl
+-lcrypto
+-lws2_32
+>
+-{vFlag}=
+-DLIBSSH2_OPENSSL
+-DNGHTTP2_STATICLIB
+>
+-{vIncl}=
+-I ../lib/includes/
+-I ExtLib/include/
+>
+;Build nghttp2
+-c ../lib/ -o obj/cpp_{_sPlatform}_{_sOpt}/lib/nghttp2/
+-{vIncl}
+-{vFlag}
+>
+;Generate Dynamic Lib
+-o obj/cpp_{_sPlatform}_{_sOpt}/lib/ -#To Lib/{_sPlatform}_{_sOpt}/nghttp2.{_sDynamic}
+-{vLib}
+>
+;Generate Static Lib
+-o obj/cpp_{_sPlatform}_{_sOpt}/lib/ -#To Lib/{_sPlatform}_{_sOpt}/libnghttp2.a
+>
+;Build Test nghttp2
+;-c ../tests/ -o obj/cpp_{_sPlatform}_{_sOpt}/tests/
+;-{vIncl}
+;-{vFlag}
+>
+;Generate executable
+;-o obj/cpp_{_sPlatform}_{_sOpt}/ -#To _out/{_sPlatform}_{_sOpt}/App.*
+;-{vLib}
+>
+;-#Run
